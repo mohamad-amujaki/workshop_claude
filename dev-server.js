@@ -1,8 +1,15 @@
-import express          from 'express';
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { randomBytes }  from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+
+let express;
+try {
+  express = (await import('express')).default;
+} catch {
+  console.error('\n  ✖ express tidak terinstal. Jalankan: npm install express\n');
+  process.exit(1);
+}
 
 const __dirname  = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR   = join(__dirname, 'data');

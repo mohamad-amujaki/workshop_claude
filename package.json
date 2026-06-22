@@ -11,8 +11,7 @@
     "test": "playwright test"
   },
   "dependencies": {
-    "@upstash/redis": "^1.38.0",
-    "express": "^5.2.1"
+    "@upstash/redis": "^1.38.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.61.0"
