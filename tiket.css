@@ -1,0 +1,243 @@
+/* =====================
+   RESET & BASE
+   ===================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --brand:      #6c47ff;
+  --brand-dark: #4f2de0;
+  --brand-light:#ede9ff;
+  --text:       #1a1a2e;
+  --muted:      #6b7280;
+  --white:      #ffffff;
+  --radius:     12px;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #2d1b69 60%, #6c47ff 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* =====================
+   PAGE WRAPPER
+   ===================== */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 680px;
+}
+
+/* =====================
+   TICKET CARD
+   ===================== */
+.ticket {
+  width: 100%;
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Header ─────────────────────────────────── */
+.ticket__header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #2d1b69 60%, #6c47ff 100%);
+  color: var(--white);
+  text-align: center;
+  padding: 2.5rem 2rem 2rem;
+}
+
+.ticket__badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 999px;
+  padding: 0.3rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.ticket__title {
+  font-size: clamp(1.75rem, 5vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.ticket__title span {
+  background: linear-gradient(90deg, #a78bfa, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ticket__event-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.8);
+}
+
+/* ── Tear line ──────────────────────────────── */
+.ticket__tear {
+  position: relative;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--brand-light) 0px,
+    var(--brand-light) 10px,
+    transparent 10px,
+    transparent 18px
+  );
+  margin: 0 1rem;
+}
+
+.ticket__tear-circle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #2d1b69 60%, #6c47ff 100%);
+  border-radius: 50%;
+}
+
+.ticket__tear-circle--left  { left:  -1.85rem; }
+.ticket__tear-circle--right { right: -1.85rem; }
+
+/* ── Body ───────────────────────────────────── */
+.ticket__body {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 2rem 1.75rem;
+  align-items: flex-start;
+}
+
+.ticket__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.ticket__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.ticket__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.ticket__value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.ticket__value--small { font-size: 0.9rem; font-weight: 500; }
+
+.ticket__kode {
+  display: inline-block;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--brand-dark);
+  background: var(--brand-light);
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  border: 1.5px dashed var(--brand);
+  width: fit-content;
+}
+
+/* ── QR Code ────────────────────────────────── */
+.ticket__qr-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.ticket__qr {
+  display: block;
+  border-radius: 12px;
+  border: 3px solid var(--brand-light);
+  padding: 6px;
+  background: var(--white);
+}
+
+.ticket__qr-hint {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ── Footer ─────────────────────────────────── */
+.ticket__footer {
+  background: #f5f3ff;
+  border-top: 1px solid var(--brand-light);
+  text-align: center;
+  padding: 0.9rem 1.5rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--brand-dark);
+}
+
+/* =====================
+   ACTIONS
+   ===================== */
+.actions { text-align: center; }
+
+.btn-back {
+  display: inline-block;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 999px;
+  padding: 0.5rem 1.25rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-back:hover {
+  background: rgba(255,255,255,0.15);
+  color: var(--white);
+}
+
+/* =====================
+   RESPONSIVE (mobile)
+   ===================== */
+@media (max-width: 500px) {
+  body { padding: 1.25rem 0.75rem; }
+
+  .ticket__body {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .ticket__qr-wrap { order: -1; } /* QR di atas di HP */
+
+  .ticket__event-info {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}

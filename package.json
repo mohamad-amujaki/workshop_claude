@@ -1,0 +1,20 @@
+{
+  "name": "workshop-claude-code",
+  "version": "1.0.0",
+  "description": "Halaman pendaftaran Workshop Claude Code",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "playwright test"
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.38.0",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.0"
+  }
+}

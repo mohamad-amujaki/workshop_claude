@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Tiket · Workshop Claude Code</title>
+    <link rel="stylesheet" href="tiket.css" />
+  </head>
+  <body>
+    <div class="page">
+
+      <!-- TIKET -->
+      <div class="ticket" id="ticket">
+
+        <!-- Header -->
+        <div class="ticket__header">
+          <div class="ticket__badge">⚡ E-TIKET RESMI</div>
+          <h1 class="ticket__title">Workshop<br /><span>Claude Code</span></h1>
+          <div class="ticket__event-info">
+            <span>📅 Sabtu, 12 Juli 2026</span>
+            <span>🕘 09.00–17.00 WIB</span>
+            <span>📍 Grand Indonesia Mall, Jakarta Pusat</span>
+          </div>
+        </div>
+
+        <!-- Garis sobek -->
+        <div class="ticket__tear">
+          <div class="ticket__tear-circle ticket__tear-circle--left"></div>
+          <div class="ticket__tear-circle ticket__tear-circle--right"></div>
+        </div>
+
+        <!-- Body -->
+        <div class="ticket__body">
+          <div class="ticket__info">
+            <div class="ticket__field">
+              <span class="ticket__label">Nama Peserta</span>
+              <span class="ticket__value" id="ticketNama">—</span>
+            </div>
+            <div class="ticket__field">
+              <span class="ticket__label">Email</span>
+              <span class="ticket__value ticket__value--small" id="ticketEmail">—</span>
+            </div>
+            <div class="ticket__field">
+              <span class="ticket__label">Jumlah Tiket</span>
+              <span class="ticket__value" id="ticketQty">—</span>
+            </div>
+            <div class="ticket__field">
+              <span class="ticket__label">Kode Tiket</span>
+              <span class="ticket__kode" id="ticketKode">—</span>
+            </div>
+          </div>
+
+          <div class="ticket__qr-wrap">
+            <img
+              id="qrImg"
+              class="ticket__qr"
+              src=""
+              alt="QR Code tiket"
+              width="180"
+              height="180"
+            />
+            <p class="ticket__qr-hint">Scan saat check-in</p>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="ticket__footer">
+          ✅ Tunjukkan halaman ini (screenshot atau layar) kepada panitia saat check-in
+        </div>
+
+      </div>
+
+      <!-- Aksi -->
+      <div class="actions">
+        <a href="/" class="btn-back">← Kembali ke Halaman Pendaftaran</a>
+      </div>
+
+    </div>
+
+    <script>
+      (function () {
+        const p     = new URLSearchParams(window.location.search);
+        const kode  = p.get('kode')  || '';
+        const nama  = p.get('nama')  || '';
+        const email = p.get('email') || '';
+        const qty   = p.get('qty')   || '';
+
+        if (!kode || !nama) { window.location.href = '/'; return; }
+
+        document.getElementById('ticketNama').textContent  = nama;
+        document.getElementById('ticketEmail').textContent = email;
+        document.getElementById('ticketQty').textContent   = `${qty} Tiket`;
+        document.getElementById('ticketKode').textContent  = kode;
+
+        document.getElementById('qrImg').src =
+          `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(kode)}&margin=8&bgcolor=ffffff`;
+
+        document.title = `E-Tiket ${nama} · Workshop Claude Code`;
+      })();
+    </script>
+  </body>
+</html>

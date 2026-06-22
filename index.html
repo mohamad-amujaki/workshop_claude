@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workshop Claude Code</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero__badge">⚡ Terbatas 100 Peserta</div>
+      <h1 class="hero__title">Workshop<br /><span>Claude Code</span></h1>
+      <p class="hero__tagline">
+        Kuasai AI coding assistant terdepan dan percepat produktivitas
+        pengembanganmu hingga 10×.
+      </p>
+
+      <div class="hero__meta">
+        <div class="meta-card">
+          <span class="meta-card__icon">📅</span>
+          <div>
+            <strong>Tanggal</strong>
+            <p>Sabtu, 12 Juli 2026</p>
+          </div>
+        </div>
+        <div class="meta-card">
+          <span class="meta-card__icon">🕘</span>
+          <div>
+            <strong>Waktu</strong>
+            <p>09.00 – 17.00 WIB</p>
+          </div>
+        </div>
+        <div class="meta-card">
+          <span class="meta-card__icon">📍</span>
+          <div>
+            <strong>Lokasi</strong>
+            <p>Grand Indonesia Mall, Jakarta Pusat</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section class="about">
+      <div class="container">
+        <h2 class="section-title">Tentang Workshop</h2>
+        <p class="about__text">
+          Workshop sehari penuh yang dirancang untuk developer, engineer, dan
+          tech enthusiast yang ingin memanfaatkan <strong>Claude Code</strong>
+          secara maksimal. Mulai dari dasar penggunaan, integrasi ke workflow
+          nyata, hingga teknik prompting tingkat lanjut — semua dibahas
+          langsung dengan praktik hands-on bersama instruktur berpengalaman.
+        </p>
+
+        <div class="perks">
+          <div class="perk">✅ Sesi hands-on 6 jam</div>
+          <div class="perk">✅ Materi eksklusif & source code</div>
+          <div class="perk">✅ Akses komunitas peserta seumur hidup</div>
+          <div class="perk">✅ Makan siang & coffee break included</div>
+          <div class="perk">✅ Sertifikat digital resmi</div>
+          <div class="perk">✅ Tanya jawab langsung dengan mentor</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOKASI -->
+    <section class="lokasi">
+      <div class="container">
+        <h2 class="section-title">Lokasi Acara</h2>
+        <p class="lokasi__alamat">📍 Grand Indonesia Shopping Town, Jalan M.H. Thamrin No.1, Menteng, Jakarta Pusat</p>
+        <div class="map-wrap">
+          <iframe
+            title="Peta lokasi Grand Indonesia Mall"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=106.8095%2C-6.2038%2C106.8335%2C-6.1878&layer=mapnik&marker=-6.1958%2C106.8215"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORM -->
+    <section class="register" id="daftar">
+      <div class="container container--narrow">
+        <h2 class="section-title">Daftar Sekarang</h2>
+        <p class="register__sub">Harga per tiket: <strong>Rp 50.000</strong></p>
+
+        <form class="form" id="registerForm" novalidate>
+          <div class="form__group">
+            <label for="nama">Nama Lengkap</label>
+            <input
+              type="text"
+              id="nama"
+              name="nama"
+              placeholder="Masukkan nama lengkap Anda"
+              required
+            />
+            <span class="form__error" id="namaError"></span>
+          </div>
+
+          <div class="form__group">
+            <label for="email">Alamat Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="contoh@email.com"
+              required
+            />
+            <span class="form__error" id="emailError"></span>
+          </div>
+
+          <div class="form__group">
+            <label for="tiket">Jumlah Tiket <span class="label-hint">(1–5)</span></label>
+            <input
+              type="number"
+              id="tiket"
+              name="tiket"
+              placeholder="Masukkan angka 1–5"
+              required
+            />
+            <span class="form__error" id="tiketError"></span>
+          </div>
+
+          <div class="form__total" id="totalBox" style="display:none">
+            Total pembayaran: <strong id="totalAmount"></strong>
+          </div>
+
+          <p class="form__api-error" id="apiError"></p>
+
+          <button type="submit" id="btnSubmit" class="btn btn--primary">
+            Beli Tiket →
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p>© 2026 Workshop Claude Code · Dibuat dengan ❤️ untuk komunitas developer Indonesia</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
