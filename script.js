@@ -67,8 +67,9 @@ form.addEventListener('submit', async (e) => {
     });
     window.location.href = `/tiket?${params.toString()}`;
 
-  } catch {
-    apiErrorEl.textContent = 'Gagal terhubung ke server. Periksa koneksi Anda.';
+  } catch (err) {
+    apiErrorEl.textContent = 'Gagal memproses pendaftaran. Coba lagi atau hubungi panitia.';
+    console.error('Fetch error:', err);
   } finally {
     btnSubmit.disabled    = false;
     btnSubmit.textContent = 'Beli Tiket →';
