@@ -1,6 +1,17 @@
+# Dependensi
 node_modules/
+
+# Data pendaftaran (berisi informasi pengguna nyata)
 data/
+
+# Environment variables — JANGAN PERNAH di-commit
 .env
 .env.local
 .env*.local
+*.local
+
+# Output tes otomatis
 test-results/
+
+# Config dev lokal (tidak dibutuhkan di server/Vercel)
+.claude/

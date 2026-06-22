@@ -359,6 +359,18 @@ input[type='number'] { -moz-appearance: textfield; }
 /* =====================
    RESPONSIVE
    ===================== */
+
+/* Tablet & desktop: paksa 3 meta-card sejajar dalam 1 baris */
+@media (min-width: 641px) {
+  .hero__meta { flex-wrap: nowrap; }
+  .meta-card  { flex: 1 1 0; min-width: 0; max-width: 320px; }
+}
+
+/* Tablet sempit: perkecil teks nilai card sedikit agar tidak pecah baris */
+@media (min-width: 641px) and (max-width: 899px) {
+  .meta-card p { font-size: 0.85rem; }
+}
+
 @media (max-width: 640px) {
   .hero { padding: 3.5rem 1.25rem 3rem; }
   .hero__meta { flex-direction: column; align-items: center; }
@@ -366,4 +378,5 @@ input[type='number'] { -moz-appearance: textfield; }
   .about, .lokasi, .register { padding: 3.5rem 0; }
   .form { padding: 1.75rem 1.25rem; }
   .section-title { font-size: 1.5rem; }
+  .map-wrap iframe { height: 280px; }
 }
