@@ -51,6 +51,14 @@ form.addEventListener('submit', async (e) => {
         jumlahTiket: getQty(),
       }),
     });
+
+    if (!res.ok) {
+      const body = await res.text().catch(() => '');
+      console.error('API response not OK:', res.status, body);
+      apiErrorEl.textContent = `Server merespon dengan error (${res.status}). Hubungi panitia.`;
+      return;
+    }
+
     const data = await res.json();
 
     if (!data.sukses) {
