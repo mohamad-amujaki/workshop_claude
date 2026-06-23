@@ -1,12 +1,7 @@
-import { Redis } from '@upstash/redis';
 import { randomBytes } from 'node:crypto';
 
-let redis;
-try {
-  redis = Redis.fromEnv();
-} catch {
-  // redis tetap undefined — akan di-handle di handler
-}
+const REDIS_URL   = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL || '';
+const REDIS_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN || '';
 
 function buatKodeTiket() {
   const tgl  = new Date().toISOString().slice(0, 10).replace(/-/g, '');
@@ -14,8 +9,22 @@ function buatKodeTiket() {
   return `WCC-${tgl}-${acak}`;
 }
 
+async function redisRpush(key, value) {
+  const url = `${REDIS_URL.replace(/\/$/, '')}/rpush/${key}`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${REDIS_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(['element', JSON.stringify(value)]),
+  });
+  if (!res.ok) throw new Error(`Redis error: ${res.status}`);
+  return res.json();
+}
+
 export default async function handler(req, res) {
-  if (!redis) {
+  if (!REDIS_URL || !REDIS_TOKEN) {
     return res.status(500).json({
       sukses: false,
       pesan: 'Konfigurasi database tidak ditemukan. Pastikan environment variable Redis (UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN) sudah diatur di Vercel.',
@@ -39,7 +48,7 @@ export default async function handler(req, res) {
   }
 
   const kodeTiket = buatKodeTiket();
-  await redis.rpush('pendaftaran', {
+  await redisRpush('pendaftaran', {
     nama: namaBersih,
     email: emailBersih,
     jumlahTiket: qty,

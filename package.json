@@ -10,9 +10,7 @@
     "dev": "node dev-server.js",
     "test": "playwright test"
   },
-  "dependencies": {
-    "@upstash/redis": "^1.38.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@playwright/test": "^1.61.0"
   }
