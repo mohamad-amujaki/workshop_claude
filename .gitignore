@@ -15,3 +15,4 @@ test-results/
 
 # Config dev lokal (tidak dibutuhkan di server/Vercel)
 .claude/
+.DS_Store
