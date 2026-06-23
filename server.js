@@ -16,6 +16,10 @@ const app = express();
 app.use(express.json());
 app.use(express.static(__dirname));
 
+app.get('/', (_req, res) => {
+  res.sendFile(join(__dirname, 'index.html'));
+});
+
 if (!existsSync(DATA_DIR)) {
   try { mkdirSync(DATA_DIR); } catch {}
 }
