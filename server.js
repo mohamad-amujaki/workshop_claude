@@ -19,6 +19,9 @@ app.use(express.static(__dirname));
 app.get('/', (_req, res) => {
   res.sendFile(join(__dirname, 'index.html'));
 });
+app.get('/style.css', (_req, res) => res.sendFile(join(__dirname, 'style.css')));
+app.get('/script.js', (_req, res) => res.sendFile(join(__dirname, 'script.js')));
+app.get('/tiket.css', (_req, res) => res.sendFile(join(__dirname, 'tiket.css')));
 
 if (!existsSync(DATA_DIR)) {
   try { mkdirSync(DATA_DIR); } catch {}
