@@ -22,7 +22,7 @@ if (!existsSync(DATA_FILE)) writeFileSync(DATA_FILE, '[]', 'utf8');
 
 const app = express();
 app.use(express.json());
-app.use(express.static(__dirname)); // sajikan index.html, style.css, script.js
+app.use(express.static(join(__dirname, 'public'))); // sajikan index.html, style.css, script.js
 
 // ── Helpers data ──────────────────────────────────────────────
 const bacaData   = ()    => JSON.parse(readFileSync(DATA_FILE, 'utf8'));
@@ -69,7 +69,7 @@ app.post('/api/daftar', (req, res) => {
 
 // ── GET /tiket — halaman e-tiket ─────────────────────────────
 app.get('/tiket', (_req, res) => {
-  res.sendFile(join(__dirname, 'tiket.html'));
+  res.sendFile(join(__dirname, 'public', 'tiket.html'));
 });
 
 // ── GET /api/pendaftaran — lihat semua data tersimpan ─────────
