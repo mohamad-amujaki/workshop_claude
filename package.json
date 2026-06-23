@@ -7,10 +7,12 @@
     "node": "20.x"
   },
   "scripts": {
-    "dev": "node dev-server.js",
+    "dev": "node server.js",
     "test": "playwright test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "express": "^5.2.1"
+  },
   "devDependencies": {
     "@playwright/test": "^1.61.0"
   }
